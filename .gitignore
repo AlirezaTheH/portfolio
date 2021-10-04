@@ -15,3 +15,6 @@ __pycache__
 
 # Generated CSS files
 css
+
+# Genereted site files
+site

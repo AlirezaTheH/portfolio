@@ -30,11 +30,14 @@ jobs:
       - name: Install dependencies
         run: python3 -m pip install -r ./requirements.txt
 
+      - name: Make destination directory for compiled CSS
+        run: mkdir -vp portfolio/static/css
+
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.4.7
         with:
           source: portfolio/static/scss/style.scss
-          destination: portfolio/static/css/style.scss
+          destination: portfolio/static/css/style.css
 
       - name: Build Portfolio
         run: python build.py

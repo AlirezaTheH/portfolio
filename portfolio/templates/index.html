@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <title>{{ data['name'] }} |</title>
+
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta name="author" content="{{ data['name'] }}">
+  <link rel="icon" href="../static/icons/icons8-resume-website-50.png">
+
+  <!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:.200,300,400,500,600,700,900"
+        rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
+  <link href="../static/css/style.css" rel="stylesheet">
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous">
+  </script>
+
+  <!-- jQuery -->
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous">
+  </script>
+</head>
+
+<body>
+  <!-- Home reference -->
+  <span id="home"></span>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="row" id="header-row">
+      <div class="col-12 text-center" id="header-col">
+
+        <!-- Headshot -->
+        <br>
+        <div class="headshot-container">
+          <img class="headshot-bw box-shadow rounded-circle"
+             src="../static/images/headshot-bw.jpg">
+          <img class="headshot-color box-shadow rounded-circle"
+             src="../static/images/headshot-color.jpg">
+        </div>
+
+        <!-- About and name -->
+        <br>
+        <div class="light4 about-container">
+          <p class="about">Hello! I'm</p>
+          <h1 class="name light4">{{ data['name'] }}</h1>
+        </div>
+
+        <!-- Tags -->
+        <div class="light4 tag-container">
+          {% for tag in data['tags'].split(', ') %}
+          <div class="tag">{{ tag }}</div>
+          {% endfor %}
+        </div>
+        <br>
+
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Navbar -->
+    <div class="sticky-top" id="navbar">
+      <nav class="nav navbar">
+        <a href="#home"
+           class="smooth-scroll nav-link btn home-icon-container hover-line-container">
+          <span class="home-icon"></span>
+          <br>
+          <span class="home-hover-line hover-animation">Home</span>
+        </a>
+        {% for section in data['sections'] %}
+        {% if data[section]['nested'] %}
+        <nav class="dropdown">
+        <a href="#{{ data[section]['sections'] | first }}-{{ section }}"
+           class="smooth-scroll nav-link btn {{ section }}-icon-container"
+           role="button"
+           aria-haspopup="true"
+           aria-expanded="false">
+        {% else %}
+        <a href="#{{ section }}"
+           class="smooth-scroll nav-link btn {{ section }}-icon-container hover-line-container">
+        {% endif %}
+          <span class="{{ section }}-icon"></span>
+          <br>
+          <span class="{{ section }}-hover-line hover-animation">{{ section.title() }}</span>
+        </a>
+        {% if data[section]['nested'] %}
+        <nav class="dropdown-menu dropdown-menu-center">
+          {% for subsection in data[section]['sections'] %}
+          <a href="#{{ subsection }}-{{ section }}"
+             class="smooth-scroll dropdown-item btn {{ subsection }}-{{ section }}-icon-container hover-line-container">
+            <span class="{{ subsection }}-{{ section }}-icon"></span>
+            <br>
+            <span class="{{ subsection }}-{{ section }}-hover-line hover-animation"
+                  style="--hover-line-bottom: -14px;">
+              {{ subsection.title() }}
+            </span>
+          </a>
+          {% endfor %}
+        </nav>
+        </nav>
+        {% endif %}
+        {% endfor %}
+      </nav>
+    </div>
+    <br>
+    <br>
+
+    <!-- Education -->
+    <div class="row" id="education-title-row">
+      <div class="col-12">
+        <div class="anchor" id="education">
+          <span class="education-icon"></span>
+          <br>
+          <span class="section-title">
+            Education
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="education-content-row">
+      <div id="education-details">
+        {% for edu in data['education'] %}
+        <div class="card box-shadow">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark5" id="card-title">
+              <div class="card-body">
+                <h5>{{ edu['school'] }}</h5>
+                {% if 'department' in edu %}
+                <small>{{ edu['department'] }}</small>
+                <br>
+                {% endif %}
+                {% if 'description' in edu %}
+                <small>{{ edu['description'] }}</small>
+                <br>
+                {% endif %}
+                <small>{{ edu['timeperiod'] }}</small>
+                <br>
+                <small>{{ edu['location'] }}</small>
+              </div>
+            </div>
+            <div class="col-md-9 bg-education-card" id="card-content">
+              <div class="card-body card-body-content">
+                <h5>{{ edu['degree'] }}</h5>
+                <p>{{ edu['elaboration'] }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Industrial Experience -->
+    <div class="row" id="industrial-experience-title-row">
+      <div class="col-12">
+        <div class="anchor" id="industrial-experience">
+          <span class="industrial-experience-icon"></span>
+          <br>
+          <span class="subsection-title">
+            Industrial
+          </span>
+          <span class="section-title">
+            Experience
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="industrial-experience-content-row">
+      <div id="industrial-experience-details">
+        {% for ie in data['experience']['sections']['industrial'] %}
+        {% if ie['visible'] %}
+        <div class="card box-shadow">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark5" id="card-title">
+              <div class="card-body">
+                <h5 class="card-title">{{ ie['title'] }}</h5>
+                <small>{{ ie['company'] }}</small>
+                <br>
+                <small>{{ ie['timeperiod'] }}</small>
+                <br>
+                <small>{{ ie['location'] }}</small>
+              </div>
+            </div>
+            <div class="col-md-9 bg-industrial-experience-card" id="card-content">
+              <div class="card-body card-body-content">
+                <h6>Accomplishments and Responsibilities:</h6>
+                <p class="card-text">{{ ie['elaboration'] }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Teaching Experience -->
+    <div class="row" id="teaching-experience-title-row">
+      <div class="col-12">
+        <div class="anchor" id="teaching-experience">
+          <span class="teaching-experience-icon"></span>
+          <br>
+          <span class="subsection-title">
+            Teaching
+          </span>
+          <span class="section-title">
+            Experience
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="teaching-experience-content-row">
+      <div id="teaching-experience-details">
+        {% for te in data['experience']['sections']['teaching'] %}
+        {% if te['visible'] %}
+        <div class="card box-shadow">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark5" id="card-title">
+              <div class="card-body">
+                <h5>{{ te['school'] }}</h5>
+                <small>{{ te['timeperiod'] }}</small>
+                <br>
+                <small>{{ te['location'] }}</small>
+              </div>
+            </div>
+            <div class="col-md-9 bg-teaching-experience-card" id="card-content">
+              <div class="card-body card-body-content">
+                <h5 class="card-title">{{ te['title'] }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Volunteer Experience -->
+    <div class="row" id="volunteer-experience-title-row">
+      <div class="col-12">
+        <div class="anchor" id="volunteer-experience">
+          <span class="volunteer-experience-icon"></span>
+          <br>
+          <span class="subsection-title">
+            Volunteer
+          </span>
+          <span class="section-title">
+            Experience
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="volunteer-experience-content-row">
+      <div id="volunteer-experience-details">
+        {% for ve in data['experience']['sections']['volunteer'] %}
+        {% if ve["visible"] %}
+        <div class="card box-shadow">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark5" id="card-title">
+              <div class="card-body">
+                <h5>{{ ve['school'] }}</h5>
+                <small>{{ ve['timeperiod'] }}</small>
+                <br>
+                <small>{{ ve['location'] }}</small>
+              </div>
+            </div>
+            <div class="col-md-9 bg-volunteer-experience-card" id="card-content">
+              <div class="card-body card-body-content">
+                <h5 class="card-title">{{ ve['title'] }}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Skills -->
+    <div class="row" id="skills-title-row">
+      <div class="col-12">
+        <div class="anchor" id="skills">
+          <span class="skills-icon"></span>
+          <br>
+          <span class="section-title">
+            Skills
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="skills-content-row">
+      <div id="skills-details">
+        {% for skill in data['skills'] %}
+        <div class="card box-shadow">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark5" id="card-title">
+              <div class="card-body">
+                <h5 class="card-title">{{ skill['type'] }}</h5>
+              </div>
+            </div>
+            <div class="col-md-9 bg-skills-card" id="card-content">
+              <div class="card-body card-body-content">
+                <h6>{{ skill['type'].capitalize() }} that I use in my day-to-day:</h6>
+                {% for language in skill['day-to-day'].split(', ') %}
+                <span class="badge rounded-pill">{{ language }}</span>
+                {% endfor %}
+                <br>
+                <br>
+                <h6>Other {{ skill['type'].lower() }}:</h6>
+                {% for language in skill['other'].split(', ') %}
+                <span class="badge rounded-pill">{{ language }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Interests -->
+    <div class="row" id="interests-title-row">
+      <div class="col-12">
+        <div class="anchor" id="interests">
+          <span class="interests-icon"></span>
+          <br>
+          <span class="section-title">
+            Interests
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="interests-content-row">
+      <div id="interests-details">
+        <div class="card box-shadow">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark5" id="card-title">
+              <div class="card-body">
+                <h5 class="card-title">Interests</h5>
+              </div>
+            </div>
+            <div class="col-md-9 bg-interests-card" id="card-content">
+              <div class="card-body card-body-content">
+                <h6>Profession-related interests:</h6>
+                {% for interest in data['interests']['profession-related'].split(', ') %}
+                <span class="badge rounded-pill">{{ interest }}</span>
+                {% endfor %}
+                <br>
+                <br>
+                <h6>Other interests:</h6>
+                {% for interest in data['interests']['other'].split(', ') %}
+                <span class="badge rounded-pill">{{ interest }}</span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Personality -->
+    <div class="row" id="personality-title-row">
+      <div class="col-12">
+        <div class="anchor" id="personality">
+          <span class="personality-icon"></span>
+          <br>
+          <span class="section-title">
+            Personality
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="personality-content-row">
+      <div id="interests-details">
+        <div class="card box-shadow">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark5" id="card-title">
+              <div class="card-body">
+                <h5 class="card-title">Personality</h5>
+              </div>
+            </div>
+            <div class="col-md-9 bg-personality-card" id="card-content">
+              <div class="card-body card-body-content">
+                {% for personality in data['personality'] %}
+                <a class="badge rounded-pill"
+                   href="{{ personality['href'] }}"
+                   target="_blank">
+                  {{ personality['type'] }}
+                </a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Projects -->
+    <div class="row" id="projects-title-row">
+      <div class="col-12">
+        <div class="anchor" id="projects">
+          <span class="projects-icon"></span>
+          <br>
+          <span class="section-title">
+            Projects
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="projects-content-row">
+      <div id="interests-details">
+        {% for project in data['projects'] %}
+        <div class="card box-shadow">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark5" id="card-title">
+              <div class="card-body">
+                <h5 class="card-title">{{ project['name'] }}</h5>
+              </div>
+            </div>
+            <div class="col-md-9 bg-projects-card" id="card-content">
+              <div class="card-body card-body-content">
+                <p>{{ project['description'] }}</p>
+                <a class="badge rounded-pill"
+                   href="{{ project['repo'] }}"
+                   target="_blank">
+                  Github
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Contributions -->
+    <div class="row" id="contributions-title-row">
+      <div class="col-12">
+        <div class="anchor" id="contributions">
+          <span class="contributions-icon"></span>
+          <br>
+          <span class="section-title">
+            Contributions
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="contributions-content-row">
+        <div id="interests-details">
+          {% for contribution in data['contributions'] %}
+          <div class="card box-shadow">
+            <div class="row g-0">
+              <div class="col-md-3 bg-dark5" id="card-title">
+                <div class="card-body">
+                  <h5 class="card-title">{{ contribution['name'] }}</h5>
+                  <small>{{ contribution['description'] }}</small>
+                </div>
+              </div>
+              <div class="col-md-9 bg-contributions-card" id="card-content">
+                <div class="card-body card-body-content">
+                  <p>{{ contribution['contribution'] }}</p>
+                  <a class="badge rounded-pill"
+                     href="{{ contribution['prs'] }}"
+                     target="_blank">
+                    Pull Requests
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    <br>
+    <br>
+
+    <!-- Honors -->
+    <div class="row" id="honors-title-row">
+      <div class="col-12">
+        <div class="anchor" id="honors">
+          <span class="honors-icon"></span>
+          <br>
+          <span class="section-title">
+            Honors
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="honors-content-row">
+      <div id="interests-details">
+        {% for honor in data['honors'] %}
+        <div class="card box-shadow">
+          <div class="row g-0">
+            <div class="col-md-3 bg-dark5" id="card-title">
+              <div class="card-body">
+                <h5 class="card-title">{{ honor['school'] }}</h5>
+                <small>{{ honor['timeperiod'] }}</small>
+                <br>
+                <small>{{ honor['location'] }}</small>
+              </div>
+            </div>
+            <div class="col-md-9 bg-honors-card" id="card-content">
+              <div class="card-body card-body-content">
+                <h5>{{ honor['accomplishment'] }} in {{ honor['title'] }}</h5>
+                <p>{{ honor['description'] }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <br>
+    <br>
+
+    <!-- Contact -->
+    <div class="row" id="contact-title-row">
+      <div class="col-12">
+        <div class="anchor" id="contact">
+          <span class="contact-icon"></span>
+          <br>
+          <span class="section-title">
+            Contact
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-container">
+      <div class="contact" role="group">
+        {% for contact in data['contact'] %}
+        <a href="{{ contact['href'] }}"
+           class="btn btn-bg btn-text {{ contact['name'] }}-icon-container"
+           target="_blank">
+          <span class="{{ contact['name'] }}-icon"></span>
+          <br>
+          <span>{{ contact['caption'] }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+
+</body>
+<script>
+  var $nav = $("#navbar")
+  var distance = $nav.offset().top;
+  $(window).scroll(function() {
+      $nav.toggleClass("scrolled", $(this).scrollTop() > distance);
+  });
+
+  var scrollDuration = 700;
+  var navbarScrollDuration = 300;
+  if (navigator.userAgent.search("Chrome") >= 0) {
+    scrollDuration = 0;
+    navbarScrollDuration = 300;
+  }
+  $(".dropdown a").mouseenter(function() {
+      $('.navbar').animate({
+          scrollTop: 100
+      }, navbarScrollDuration, function() {
+      });
+  });
+  $(".navbar").mouseleave(function() {
+      $('.navbar').animate({
+          scrollTop: -100
+      }, navbarScrollDuration, function() {
+      });
+  });
+
+  $(".smooth-scroll").on("click", function(event) {
+      var hash = this.hash;
+      event.preventDefault();
+      $('html, body').animate({
+          scrollTop: $(hash).offset().top - 90
+      }, scrollDuration, function() {
+      window.location.hash = hash;
+      });
+  });
+</script>
+</html>

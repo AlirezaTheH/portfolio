@@ -1,0 +1,33 @@
+%headshot-shared {
+  max-width: 150px;
+  max-height: 150px;
+  margin: auto;
+}
+
+.headshot-container {
+  @extend %headshot-shared;
+  position: relative;
+  transition: all 500ms;
+
+  .headshot-bw {
+    @extend %headshot-shared;
+    display: block;
+  }
+
+  .headshot-color {
+    @extend %headshot-shared;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 500ms;
+  }
+}
+
+.headshot-container:hover {
+  transform: scale(1.02);
+
+  .headshot-color {
+    opacity: 1;
+  }
+}

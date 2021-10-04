@@ -1,0 +1,24 @@
+// Grid breakpoints
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+$color-map: (
+  home: $light1,
+  education: $purple0,
+  industrial-experience: $pink0,
+  teaching-experience: $orange0,
+  volunteer-experience: $yellow0,
+  skills: $blue0,
+  interests: $green0,
+  personality: $red0,
+  projects: $gold0,
+  contributions: $pink0,
+  honors: $light2,
+  resume: $yellow1,
+  blog: $red1,
+  contact: $blue1,
+);

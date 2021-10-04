@@ -1,0 +1,30 @@
+@import "colors";
+
+$dark-colors: $dark0, $dark1, $dark2, $dark3, $dark4, $dark5;
+$light-colors: $light0, $light1, $light2, $light3, $light4, $light5;
+
+@for $i from 1 through 6 {
+  .dark#{$i - 1} {
+    color: nth($dark-colors, $i);
+  }
+  .bg-dark#{$i - 1} {
+    background-color: nth($dark-colors, $i);;
+  }
+}
+
+@for $i from 1 through 6 {
+  .light#{$i - 1} {
+    color: nth($light-colors, $i);
+  }
+  .bg-light#{$i - 1} {
+    background-color: nth($light-colors, $i);;
+  }
+}
+
+.gold0 {
+  color: $gold0;
+}
+
+.bg-gold0 {
+  background-color: $gold0;
+}

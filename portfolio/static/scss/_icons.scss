@@ -1,0 +1,51 @@
+$icon-size: 30px;
+
+// icon filename hover-color
+$icons:
+  email email blue0,
+  github github blue0,
+  linkedin linkedin-2 blue0,
+  address address blue0,
+  home home light1,
+  education graduation-cap light1,
+  experience backpack light1,
+  industrial-experience laptop-coding light1,
+  teaching-experience training light1,
+  volunteer-experience volunteering light1,
+  skills wizard light1,
+  interests wish-list light1,
+  personality camera-addon-identification light1,
+  projects repository light1,
+  contributions merge-git light1,
+  honors prize light1,
+  resume resume light1,
+  blog blog light1,
+  contact contact-us light1;
+
+@each $section, $filename, $hover-color in $icons {
+  .#{$section}-icon {
+    background-image: url("../icons/ios-filled/light4/icons8-#{$filename}-50.png");
+    background-size: contain;
+    height: $icon-size;
+    width: $icon-size;
+    display: inline-block;
+  }
+
+  .#{$section}-icon-container {
+    color: $light4;
+    font-size: 12px;
+    font-weight: 500;
+
+    &:hover {
+      .#{$section}-icon {
+        background-image: url("../icons/ios-filled/#{$hover-color}/icons8-#{$filename}-50.png");
+        background-size: contain;
+      }
+    }
+  }
+}
+
+.larger-icon {
+  width: $icon-size + 10px;
+  height: $icon-size + 10px;
+}

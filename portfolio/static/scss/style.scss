@@ -1,0 +1,49 @@
+@import "colors";
+@import "variables";
+@import "bg-colors";
+@import "icons";
+@import "cards";
+@import "headshot";
+@import "navbar";
+@import "hover-line";
+@import "header";
+
+html {
+  background-color: $dark1;
+}
+
+body {
+  font-family: Helvetica, "Helvetica Neue", Roboto, sans-serif;
+  position: relative;
+  background-color: inherit;
+  height: 100%;
+}
+
+.box-shadow {
+  box-shadow: 0px 0px 5px $dark4;
+}
+
+.btn:hover {
+  color: $light1;
+}
+
+.bolder {
+  font-weight: bolder;
+}
+
+.section-title {
+  color: $light4;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.subsection-title {
+  font-weight: 300;
+  color: $light4;
+  font-size: 20px;
+}
+
+.badge {
+  background-color: $light1;
+  color: $blue0;
+}

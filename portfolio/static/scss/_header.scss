@@ -1,0 +1,36 @@
+.about-container {
+  width: fit-content;
+  display: inline-block;
+}
+
+.about {
+  text-align: left;
+  font-size: 26px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.name {
+  margin-top: -10px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.tag-container {
+  justify-content: center;
+  display: flex;
+}
+
+.tag {
+  margin-top: 2px;
+  margin-right: 5px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  border: 1px solid rgba($light4, .5);
+  max-width: fit-content;
+  padding: 5px 10px;
+  border-radius: 15px;
+}

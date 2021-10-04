@@ -1,0 +1,54 @@
+:root {
+  --hover-line-bottom: -19px;
+}
+
+.hover-line-container {
+  @each $name, $color in $color-map {
+    .#{$name}-hover-line {
+      text-align: center;
+      margin: 0 auto;
+      padding: 0;
+      position: relative;
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: var(--hover-line-bottom);
+        width: 0px;
+        height: 1px;
+        margin: 5px 0 0;
+        transition: width 300ms, opacity 500ms;
+        opacity: 0;
+        background-color: $color;
+      }
+      &.hover-animation {
+        &:before {
+          left: 50%;
+        }
+        &:after {
+          right: 50%;
+        }
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+
+    @each $name, $color in $color-map {
+      .#{$name}-hover-line {
+        &:before,
+        &:after {
+          width: 100%;
+          opacity: 1;
+        }
+
+        &.hover-animation {
+          &:before,
+          &:after {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+}

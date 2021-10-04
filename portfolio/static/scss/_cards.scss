@@ -1,0 +1,60 @@
+@use "sass:map";
+
+// name color
+$cards:
+  education,
+  industrial-experience,
+  teaching-experience,
+  volunteer-experience,
+  skills,
+  interests,
+  personality,
+  projects,
+  contributions,
+  honors;
+
+@each $card in $cards {
+  .bg-#{$card}-card {
+    background-image: url("../images/" + $card + "-card.jpg");
+    min-height: 100%;
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-left: 1px solid map.get($color-map, $card);
+  }
+}
+
+@media (max-width: $md) {
+  @each $card, $color in $cards {
+    .bg-#{$card}-card {
+      border-top: 1px solid $color;
+      border-left: none;
+    }
+  }
+}
+
+.card {
+  color: $light1;
+  border: none;
+  margin: 10px 0;
+}
+
+.card-body-content {
+  background-color: $dark2-blur;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  height: 100%;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+}
+
+.contact {
+  background-color: $dark2-blur;
+  padding: 20px;
+  border-radius: 15px 15px 0 0;
+}

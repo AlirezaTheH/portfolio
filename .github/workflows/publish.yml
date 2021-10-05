@@ -42,12 +42,13 @@ jobs:
       - name: Build Portfolio
         run: python build.py
 
-      - name: Deploy
+      - name: Deploy portfolio to alirezatheh.github.io
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.GHPAGES_TOKEN }}
           publish_dir: ./site
-          publish_branch: gh-pages
+          external_repository: alirezatheh/alirezatheh.github.io
+          publish_branch: main
           allow_empty_commit: false
           keep_files: false
           force_orphan: false

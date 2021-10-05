@@ -7,11 +7,10 @@
 .headshot-container {
   @extend %headshot-shared;
   position: relative;
-  transition: all 500ms;
+  transition: transform 500ms;
 
   .headshot-bw {
     @extend %headshot-shared;
-    display: block;
   }
 
   .headshot-color {
@@ -20,14 +19,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition: all 500ms;
+    transition: opacity 500ms;
   }
-}
 
-.headshot-container:hover {
-  transform: scale(1.02);
+  &:hover {
+    transform: scale(1.02);
 
-  .headshot-color {
-    opacity: 1;
+    .headshot-color {
+      opacity: 1;
+    }
   }
 }

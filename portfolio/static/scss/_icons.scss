@@ -22,13 +22,29 @@ $icons:
   blog blog light1,
   contact contact-us light1;
 
+%icon-shared {
+  width: $icon-size;
+  height: $icon-size;
+  background-size: contain;
+  display: inline-block;
+}
+
+
 @each $section, $filename, $hover-color in $icons {
   .#{$section}-icon {
     background-image: url("../icons/ios-filled/light4/icons8-#{$filename}-50.png");
-    background-size: contain;
-    height: $icon-size;
-    width: $icon-size;
-    display: inline-block;
+    position: relative;
+    @extend %icon-shared;
+
+    .#{$section}-icon-hover {
+      background-image: url("../icons/ios-filled/#{$hover-color}/icons8-#{$filename}-50.png");
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 500ms;
+      @extend %icon-shared;
+    }
   }
 
   .#{$section}-icon-container {
@@ -37,9 +53,8 @@ $icons:
     font-weight: 500;
 
     &:hover {
-      .#{$section}-icon {
-        background-image: url("../icons/ios-filled/#{$hover-color}/icons8-#{$filename}-50.png");
-        background-size: contain;
+      .#{$section}-icon-hover {
+        opacity: 1;
       }
     }
   }

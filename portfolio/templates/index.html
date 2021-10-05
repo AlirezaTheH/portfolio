@@ -50,9 +50,9 @@
         <br>
         <div class="headshot-container">
           <img class="headshot-bw box-shadow rounded-circle"
-             src="../static/images/headshot-bw.jpg">
+             src="./static/images/headshot-bw.jpg">
           <img class="headshot-color box-shadow rounded-circle"
-             src="../static/images/headshot-color.jpg">
+             src="./static/images/headshot-color.jpg">
         </div>
 
         <!-- About and name -->
@@ -80,7 +80,9 @@
       <nav class="nav navbar">
         <a href="#home"
            class="smooth-scroll nav-link btn home-icon-container hover-line-container">
-          <span class="home-icon"></span>
+          <span class="home-icon">
+            <span class="home-icon-hover"></span>
+          </span>
           <br>
           <span class="home-hover-line hover-animation">Home</span>
         </a>
@@ -96,7 +98,9 @@
         <a href="#{{ section }}"
            class="smooth-scroll nav-link btn {{ section }}-icon-container hover-line-container">
         {% endif %}
-          <span class="{{ section }}-icon"></span>
+          <span class="{{ section }}-icon">
+            <span class="{{ section }}-icon-hover"></span>
+          </span>
           <br>
           <span class="{{ section }}-hover-line hover-animation">{{ section.title() }}</span>
         </a>
@@ -105,7 +109,9 @@
           {% for subsection in data[section]['sections'] %}
           <a href="#{{ subsection }}-{{ section }}"
              class="smooth-scroll dropdown-item btn {{ subsection }}-{{ section }}-icon-container hover-line-container">
-            <span class="{{ subsection }}-{{ section }}-icon"></span>
+            <span class="{{ subsection }}-{{ section }}-icon">
+              <span class="{{ subsection }}-{{ section }}-icon-hover"></span>
+            </span>
             <br>
             <span class="{{ subsection }}-{{ section }}-hover-line hover-animation"
                   style="--hover-line-bottom: -14px;">
@@ -564,7 +570,9 @@
         <a href="{{ contact['href'] }}"
            class="btn btn-bg btn-text {{ contact['name'] }}-icon-container"
            target="_blank">
-          <span class="{{ contact['name'] }}-icon"></span>
+          <span class="{{ contact['name'] }}-icon">
+            <span class="{{ contact['name'] }}-icon-hover"></span>
+          </span>
           <br>
           <span>{{ contact['caption'] }}</span>
         </a>

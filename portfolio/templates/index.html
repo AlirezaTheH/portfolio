@@ -332,14 +332,14 @@
             <div class="col-md-9 bg-skills-card" id="card-content">
               <div class="card-body card-body-content">
                 <h6>{{ skill['type'].capitalize() }} that I use in my day-to-day:</h6>
-                {% for language in skill['day-to-day'].split(', ') %}
-                <span class="badge rounded-pill">{{ language }}</span>
+                {% for s in skill['day-to-day'].split(', ') %}
+                <span class="badge rounded-pill">{{ s }}</span>
                 {% endfor %}
                 <br>
                 <br>
                 <h6>Other {{ skill['type'].lower() }}:</h6>
-                {% for language in skill['other'].split(', ') %}
-                <span class="badge rounded-pill">{{ language }}</span>
+                {% for s in skill['other'].split(', ') %}
+                <span class="badge rounded-pill">{{ s }}</span>
                 {% endfor %}
               </div>
             </div>

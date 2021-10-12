@@ -27,9 +27,9 @@ $cards:
 }
 
 @media (max-width: $md) {
-  @each $card, $color in $cards {
+  @each $card in $cards {
     .bg-#{$card}-card {
-      border-top: 1px solid $color;
+      border-top: 1px solid map.get($color-map, $card);
       border-left: none;
     }
   }

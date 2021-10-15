@@ -1,0 +1,228 @@
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+% To typeset columns of text in parallel
+\usepackage{paracol}
+
+\ifxetexorluatex
+    % If using xelatex or lualatex:
+    \setmainfont{Lato}
+\else
+    % If using pdflatex:
+    \usepackage[default]{lato}
+\fi
+
+\begin{document}
+
+\firstname{\VAR{data['name']['first']}}
+\lastname{\VAR{data['name']['last']}}
+\tagline{\VAR{data['tags']}}
+
+\photo{3cm}{../static/images/headshot-color}
+
+\contact{%
+    \birthdate{\VAR{data['birthdate']}}\par
+    \BLOCK{for contact in data['contact']}
+    \VAR{'\\'}\VAR{contact['name']}{\VAR{contact['printable']}}{\VAR{contact['href']}}\par
+    \BLOCK{endfor}
+}
+
+\makecvheader
+
+% Set the left/right column width ratio to 25:75.
+% By changing this \@columnratio in cls also needs to ba changed
+\columnratio{.25}
+% Start a 2-column paracol.
+\begin{paracol}{2}
+
+
+% -- Skills ------------------------------------------------------------
+\cvsection{}{Skills}
+
+\BLOCK{for skill in data['skills']}
+\cvsubsection{\VAR{skill['type']}}
+
+\cvsubsubsection{Day-to-Day:}
+\cvbadges{%
+\BLOCK{for s in skill['day-to-day'].split(', ')}
+\BLOCK{if loop.last}
+\VAR{s.replace('#', '\#')}}
+\BLOCK{else}
+\VAR{s.replace('#', '\#')},
+\BLOCK{endif}
+\BLOCK{endfor}
+\medskip
+
+\cvsubsubsection{Other:}
+\cvbadges{%
+\BLOCK{for s in skill['other'].split(', ')}
+\BLOCK{if loop.last}
+\VAR{s.replace('#', '\#')}}
+\BLOCK{else}
+\VAR{s.replace('#', '\#')},
+\BLOCK{endif}
+\BLOCK{endfor}
+
+
+\BLOCK{if not loop.last}
+\divider
+\BLOCK{endif}
+
+\BLOCK{endfor}
+% ----------------------------------------------------------------------
+
+
+% -- Personality -------------------------------------------------------
+\cvsection{}{Personality}
+
+\cvbadges{%
+\BLOCK{for personality in data['personality']}
+\BLOCK{if loop.last}
+\href{\VAR{personality['href']}}{\VAR{personality['printable']}}}
+\BLOCK{else}
+\href{\VAR{personality['href']}}{\VAR{personality['printable']}},
+\BLOCK{endif}
+\BLOCK{endfor}
+% ----------------------------------------------------------------------
+
+\newpage
+
+% -- Interests ---------------------------------------------------------
+\cvsection{}{Interests}
+
+\cvsubsubsection{Profession related:}
+\cvbadges{%
+\BLOCK{for interest in data['interests']['profession-related'].split(', ')}
+\BLOCK{if loop.last}
+\VAR{interest}}
+\BLOCK{else}
+\VAR{interest},
+\BLOCK{endif}
+\BLOCK{endfor}
+\medskip
+
+\cvsubsubsection{Other:}
+\cvbadges{%
+\BLOCK{for interest in data['interests']['other'].split(', ')}
+\BLOCK{if loop.last}
+\VAR{interest}}
+\BLOCK{else}
+\VAR{interest},
+\BLOCK{endif}
+\BLOCK{endfor}
+% ----------------------------------------------------------------------
+
+\switchcolumn
+
+% -- Education ---------------------------------------------------------
+\cvsection{}{Education}
+
+\BLOCK{for e in data['education']}
+\cvevent
+    {\VAR{e['degree']}}
+    {\VAR{e['school']}}
+    {\VAR{e.get('department', e['description'])}}
+    {\VAR{e['timeperiod']}}
+    {\VAR{e['location']}}
+\small{\VAR{e['elaboration'].strip()}}
+
+\BLOCK{if not loop.last}
+\divider
+\BLOCK{endif}
+
+\BLOCK{endfor}
+% ----------------------------------------------------------------------
+
+
+% -- Industrial Experience ---------------------------------------------
+\cvsection{Industrial}{Experience}
+
+\BLOCK{for ie in data['experience']['sections']['industrial']}
+\BLOCK{if ie['visible']}
+
+\cvevent
+    {\VAR{ie['title']}}
+    {\VAR{ie['company']}}
+    {}
+    {\VAR{ie['timeperiod']}}
+    {\VAR{ie['location']}}
+
+\begin{itemize}
+\BLOCK{for e in ie['elaboration'].split('\n')[:-1]}
+\item \VAR{e[2:]}
+\BLOCK{endfor}
+\end{itemize}
+
+\BLOCK{if not loop.last}
+\divider
+\BLOCK{endif}
+
+\BLOCK{endif}
+\BLOCK{endfor}
+% ----------------------------------------------------------------------
+
+
+% -- Teaching Experience -----------------------------------------------
+\cvsection{Teaching}{Experience}
+
+\BLOCK{for te in data['experience']['sections']['teaching']}
+\BLOCK{if te['visible']}
+
+\cvevent
+    {\VAR{te['title']}}
+    {\VAR{te['school']}}
+    {}
+    {\VAR{te['timeperiod']}}
+    {\VAR{te['location']}}
+
+\BLOCK{if not loop.last}
+\divider
+\BLOCK{endif}
+
+\BLOCK{endif}
+\BLOCK{endfor}
+% ----------------------------------------------------------------------
+
+
+% --- Volunteer Experience ---------------------------------------------
+\cvsection{Volunteer}{Experience}
+
+\BLOCK{for ve in data['experience']['sections']['volunteer']}
+\BLOCK{if ve['visible']}
+
+\cvevent
+    {\VAR{ve['title']}}
+    {\VAR{ve['school']}}
+    {}
+    {\VAR{ve['timeperiod']}}
+    {\VAR{ve['location']}}
+
+\BLOCK{if not loop.last}
+\divider
+\BLOCK{endif}
+
+\BLOCK{endif}
+\BLOCK{endfor}
+% ----------------------------------------------------------------------
+
+
+% -- Honors ------------------------------------------------------------
+\cvsection{}{Honors}
+
+\BLOCK{for honor in data['honors']}
+\cvevent
+    {\VAR{honor['accomplishment']} in \VAR{honor['title']}}
+    {\VAR{honor['school']}}
+    {\VAR{honor['description']}}
+    {\VAR{honor['timeperiod']}}
+    {\VAR{honor['location']}}
+
+\BLOCK{if not loop.last}
+\divider
+\BLOCK{endif}
+
+\BLOCK{endfor}
+% ----------------------------------------------------------------------
+
+\end{paracol}
+
+\end{document}

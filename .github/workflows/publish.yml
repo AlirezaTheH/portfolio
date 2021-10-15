@@ -39,8 +39,17 @@ jobs:
           source: portfolio/static/scss/style.scss
           destination: portfolio/static/css/style.css
 
-      - name: Build Portfolio
+      - name: Build portfolio
         run: python build.py
+
+      - name: Build resume PDF
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: resume.tex
+          working_directory: portfolio/tex
+
+      - name: Move resume PDF to site
+        run: mv portfolio/tex/resume.pdf site/files
 
       - name: Deploy portfolio to alirezatheh.github.io
         uses: peaceiris/actions-gh-pages@v3

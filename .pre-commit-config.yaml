@@ -24,6 +24,7 @@ repos:
           - --docstring-convention=numpy
           # E226 missing whitespace around arithmetic operator
           # W503 line break before binary operator
+          # W605 invalid escape sequence
           # D100 Missing docstring in public module
           # D104 Missing docstring in public package
           # D105 Missing docstring in magic method
@@ -39,6 +40,7 @@ repos:
           - --ignore=
             - E226
             - W503
+            - W605
             - D100
             - D104
             - D105

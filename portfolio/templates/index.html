@@ -2,11 +2,11 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <title>{{ data['name'] }} | {{ data['tags'] }}</title>
+  <title>{{ data['name']['first'] }} {{ data['name']['last'] }} | {{ data['tags'] }}</title>
 
   <!-- Meta -->
   <meta charset="utf-8">
-  <meta name="author" content="{{ data['name'] }}">
+  <meta name="author" content="{{ data['name']['first'] }} {{ data['name']['last'] }}">
   <link rel="icon" href="./static/icons/icons8-resume-website-50.png">
 
   <!-- Google Fonts -->
@@ -59,7 +59,7 @@
         <br>
         <div class="light4 about-container">
           <p class="about">Hello! I'm</p>
-          <h1 class="name light4">{{ data['name'] }}</h1>
+          <h1 class="name light4">{{ data['name']['first'] }} {{ data['name']['last'] }}</h1>
         </div>
 
         <!-- Tags -->
@@ -94,6 +94,9 @@
            role="button"
            aria-haspopup="true"
            aria-expanded="false">
+        {% elif section == 'resume' %}
+        <a href="./files/{{ section }}.pdf"
+           class="smooth-scroll nav-link btn {{ section }}-icon-container hover-line-container">
         {% else %}
         <a href="#{{ section }}"
            class="smooth-scroll nav-link btn {{ section }}-icon-container hover-line-container">
@@ -566,7 +569,7 @@
     </div>
     <div class="contact-container">
       <div class="contact" role="group">
-        {% for contact in data['contact'] %}
+        {% for contact in data['contact'][1:] %}
         <a href="{{ contact['href'] }}"
            class="btn btn-bg btn-text {{ contact['name'] }}-icon-container"
            target="_blank">

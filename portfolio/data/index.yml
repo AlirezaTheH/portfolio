@@ -1,8 +1,13 @@
-name: Alireza Hosseini
+name:
+  first: Alireza
+  last: Hosseini
+
+birthdate: October 23, 1995
+
 tags: AI Engineer, Backend Developer
 
 education:
-  - degree: Bachelor of Science (B.Sc.) in Computer Engineering with a concentration on AI
+  - degree: Bachelor of Science (B.Sc.) in Computer Engineering with AI Concentration
     school: Iran University of Science and Technology
     department: Department of Computer Engineering
     location: Tehran, Iran
@@ -132,6 +137,7 @@ interests:
 
 personality:
   - type: ISTJ-A
+    printable: 16personalities.com/istj-personality
     href: https://www.16personalities.com/istj-personality
 
 projects:
@@ -199,18 +205,27 @@ blog:
   nested: False
 
 contact:
+  - name: portfolio
+    caption: Portfolio
+    printable: alirezatheh.github.io
+    href: https://alirezatheh.github.io
+
   - name: email
     caption: Email
+    printable: alirezatheh@gmail.com
     href: mailto:alirezatheh@gmail.com
 
   - name: github
     caption: Github
+    printable: github.com/alirezatheh
     href: https://github.com/alirezatheh
 
   - name: linkedin
     caption: LinkedIn
-    href: https://www.linkedin.com/in/alirezatheh
+    printable: linkedin.com/in/alirezatheh
+    href: https://linkedin.com/in/alirezatheh
 
-  - name: address
+  - name: location
     caption: Iran
+    printable: Iran
     href: https://goo.gl/maps/RKpRmdWpxXm33Ah38

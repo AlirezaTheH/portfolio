@@ -18,3 +18,6 @@ css
 
 # Genereted site files
 site
+
+# Generated tex files
+portfolio/tex/*.tex

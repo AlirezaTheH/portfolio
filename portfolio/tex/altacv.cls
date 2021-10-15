@@ -258,8 +258,6 @@
 \def\@columnsep{1cm}
 \def\@columnratio{.25}
 \def\@sidecolwidth{\dimexpr\@columnratio\dimexpr\pdfpagewidth-\@left-\@right-\@columnsep\relax}
-\newlength{\ali}
-\settowidth{\ali}{\dimexpr\@sidecolwidth pt}
 \def\@sidewidth{\dimexpr\@sidecolwidth+\@left+.5\@columnsep}
 \geometry{left=\@left,right=\@right,top=1cm,bottom=1cm,columnsep=\@columnsep}
 

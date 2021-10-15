@@ -5,7 +5,7 @@ import os
 import shutil
 from os.path import isdir, join
 
-from portfolio.app import write_html
+from portfolio.utils import write_html
 
 os.makedirs('site', exist_ok=True)
 shutil.rmtree('site')

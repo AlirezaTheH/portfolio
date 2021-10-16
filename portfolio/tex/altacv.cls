@@ -243,9 +243,9 @@
 \newcommand{\lastnamefont}{\namefontshared\fontseries{mb}\selectfont}
 \newcommand{\taglinefont}{\large\fontseries{mb}\selectfont}
 \newcommand{\contactfont}{\footnotesize\bfseries}
-\newcommand{\cvsectionfontshred}{\fontsize{15}{30}\selectfont}
-\newcommand{\cvsectionfont}{\cvsectionfontshred\bfseries}
-\newcommand{\cvsectionlightfont}{\cvsectionfontshred\selectfont}
+\newcommand{\cvsectionfontshared}{\fontsize{15}{30}\selectfont}
+\newcommand{\cvsectionfont}{\cvsectionfontshared\bfseries}
+\newcommand{\cvsectionlightfont}{\cvsectionfontshared\selectfont}
 \newcommand{\cvsubsectionfont}{\large\bfseries}
 \newcommand{\cvsubsubsectionfont}{\bfseries}
 

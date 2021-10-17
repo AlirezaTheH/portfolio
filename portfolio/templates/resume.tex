@@ -148,7 +148,7 @@
 
 \begin{itemize}
 \BLOCK{for e in ie['elaboration'].split('\n')[:-1]}
-\item \VAR{e[2:]}
+\item \VAR{e[2:].replace('%', '\%')}
 \BLOCK{endfor}
 \end{itemize}
 

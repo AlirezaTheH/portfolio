@@ -122,6 +122,7 @@
     \catcode`\$=12%
     \catcode`\#=12%
     \catcode`\~=12%
+    \catcode`\%=12%
 %    \catcode`\\=12%
     {#1}%
 }%
@@ -343,7 +344,7 @@
 
 
 \newlength{\badgewidth}
-% \cvbadge{comma-separated list of badges}
+% \cvbadges{comma-separated list of badges}
 \newcommand{\cvbadges}[1]{%
     % Varibale for saving total badge width in current line
     \pgfmathsetmacro{\sofarlinewidth}{0}%

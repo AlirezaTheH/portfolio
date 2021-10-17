@@ -464,7 +464,11 @@
                 <a class="badge rounded-pill"
                    href="{{ project['repo'] }}"
                    target="_blank">
+                  {% if 'github' in project['repo'] %}
                   Github
+                  {% else %}
+                  Gitlab
+                  {% endif %}
                 </a>
               </div>
             </div>

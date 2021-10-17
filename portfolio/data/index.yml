@@ -7,7 +7,7 @@ birthdate: October 23, 1995
 tags: AI Engineer, Backend Developer
 
 education:
-  - degree: Bachelor of Science (B.Sc.) in Computer Engineering with AI Concentration
+  - degree: Bachelor of Science in Computer Engineering with AI Concentration
     school: Iran University of Science and Technology
     department: Department of Computer Engineering
     location: Tehran, Iran
@@ -33,18 +33,21 @@ experience:
         timeperiod: February 2019 - August 2019
         visible: True
         elaboration: |
-          - Designing new RESTful Django API for Bookapo clients.
-          - Leading Bookapo campaign implementions.
-          - Building Bookapo's ios app and also uploading it to App Store (which is something nearly impossible in Iran due to US sanctions).
+          - Led a software development Backend team and boosted Backend projects to increase an e-book platform users’ conversion rate by 20%.
+          - Reached out to 97% of non-crashed users by reducing the application’s memory usage by 80% by optimizing platform media sizes.
+          - Ensured reaching out to a 100% increase in the number of users up to 200,000 users and 100% increase in renewal rate by fixing the platform’s reported bugs, desiging new marketing SDK and leading campaigns implementations.
+          - Enhanced user experience by configing push notifications gloably for applications.
+          - Improved server's maintainability by designing new RESTful API (DRF) and new database (MySQL).
+          - Reached out to a 40,000 of iOS users by platform's iOS app (React Native) by building iOS version and solving the problems to uploading it to App Store (which is something nearly impossible in Iran due to US sanctions).
 
       - company: Bale Messenger
-        title: Mid-level Continuous Integration (CI) Desginer
+        title: Mid-level Continuous Integration Desginer
         location: Tehran, Iran
         timeperiod: June 2017 - February 2018
         visible: True
         elaboration: |
-          - Extending test suite for Android client of Bale Messenger.
-          - Designing continuous integration for both Android and iOS clients of Bale Messenger.
+          - Boosted messenger's applications test coverage from 40% to 95% by extending UI test suite (appium).
+          - Reduced UI test suite execution time by 50% through designing a new continuous integration for both Android and iOS clients of messenger.
           - Spearheaded internal education initiatives to train colleagues on working with CI and fundamentals of Test-driven development (TDD).
 
       - company: Irsapardaz Pasargad
@@ -53,8 +56,9 @@ experience:
         timeperiod: May 2016 - October 2016
         visible: True
         elaboration: |
-          - Improving Noorbala's performance which was a car dealership website.
-          - Updaeting and improving ad crawler of Noorbala website. This was one the hardest challenges of the job, because we needed to develop a general crawler to crawl all other car dealership websites.
+          - Improved a car dealership website (.NET) performance by 30% by refactoring website's controller and reducing it's response time.
+          - Enhanced website's maintainability by updating it's admin panel.
+          - Gained a 500% increase in number of active ads up to 25,000 ads by updaeting and improving general purpose ad crawler of the website.
 
 
     teaching:
@@ -97,13 +101,13 @@ experience:
         visible: True
 
       - school: Allame Jafari High School
-        title: Lead Question Designer and Mentor of Physics Hockey Tournament
+        title: Lead Designer and Mentor of Physics Hockey Tournament
         location: Qazvin, Iran
         timeperiod: January 2013
         visible: True
 
       - school: Allame Jafari High School
-        title: Lead Question Designer and Mentor of Mathematics Hockey Tournament
+        title: Lead Designer and Mentor of Mathematics Hockey Tournament
         location: Qazvin, Iran
         timeperiod: January 2013
         visible: True
@@ -111,12 +115,12 @@ experience:
 
 skills:
   - type: Programming Languages
-    day-to-day: Python
-    other: Swift, C++, C, C#, Java, HTML, CSS, JavaScript, Matlab, ASL, VHDL, Verilog, Assembly, Objective-C, ANTLR
+    day-to-day: Python, Bash, YAML
+    other: Swift, C++, HTML, CSS, SCSS, C, C#, Java, JavaScript, Matlab, ASL, VHDL, Verilog, Assembly, Objective-C, ANTLR
 
   - type: Packages
-    day-to-day: Django REST framework, Hazm, NumPy, NetworkX, SwiftUI, Matplotlib
-    other: Keras, PyQt, Telegram Client, Telegram Bot
+    day-to-day: Django REST framework, NLTK, Hazm, NumPy, SciPy, NetworkX, Matplotlib, SwiftUI, appium, .NET
+    other: Keras, PyQt, Telegram Client, Telegram Bot, Twitter Client, jQuery
 
   - type: Databases
     day-to-day: SQL, Redis
@@ -124,7 +128,7 @@ skills:
 
   - type: Tools
     day-to-day: PyCharm, Xcode, Git, Postman
-    other: Paw, Docker, NGINX, Xilinx ISE
+    other: Paw, Docker, NGINX, Apache, Xilinx ISE
 
   - type: Operating Systems
     day-to-day: macOS
@@ -144,6 +148,14 @@ projects:
   - name: Perke
     description: Perke is a Python keyphrase extraction package for Persian language. It provides an end-to-end keyphrase extraction pipeline in which each component can be easily modified or extended to develop new models.
     repo: https://github.com/alirezatheh/perke
+
+  - name: Twigram
+    description: Twigram is a Telegram bot that forwards a Twitter account's tweets to a Telegram channel in a decent way.
+    repo: https://gitlab.com/alirezatheh/twigraf
+
+  - name: Agent Based Simulation
+    description: An agent based simulation for arrivals and departures of passengers in a tunnel.
+    repo: https://gitlab.com/alirezatheh/agent-based-simulation
 
   - name: Inverted Pendulum
     description: A Complete Simulation of a Inverted Pendulum, controlled with a Fuzzy Logic Controller

@@ -243,10 +243,10 @@
 \newcommand{\lastnamefont}{\namefontshared\fontseries{mb}\selectfont}
 \newcommand{\taglinefont}{\large\fontseries{mb}\selectfont}
 \newcommand{\contactfont}{\footnotesize\bfseries}
-\newcommand{\cvsectionfontshared}{\fontsize{15}{30}\selectfont}
+\newcommand{\cvsectionfontshared}{\large}
 \newcommand{\cvsectionfont}{\cvsectionfontshared\bfseries}
-\newcommand{\cvsectionlightfont}{\cvsectionfontshared\selectfont}
-\newcommand{\cvsubsectionfont}{\large\bfseries}
+\newcommand{\cvsectionlightfont}{\cvsectionfontshared}
+\newcommand{\cvsubsectionfont}{\fontsize{11}{11}\selectfont\bfseries}
 \newcommand{\cvsubsubsectionfont}{\bfseries}
 
 
@@ -320,7 +320,7 @@
 
 % \cvevent{title}{company or school}{timeperiod}{location}
 \newcommand{\cvevent}[5]{%
-  {\large\color{emphasis}\bfseries#1\par}
+  {\cvsubsectionfont\color{emphasis}#1\par}
   \smallskip\normalsize
   \ifstrequal{#2}{}{}{
       \textbf{#2}

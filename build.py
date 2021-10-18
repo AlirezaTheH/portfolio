@@ -27,3 +27,6 @@ for filename in os.listdir(static_dir):
     if filename != 'scss' and isdir(filepath):
         shutil.copytree(filepath,
                         join('site', 'static', filename))
+
+shutil.copy(join('portfolio', 'readme', 'README.md'),
+            join('site', 'README.md'))

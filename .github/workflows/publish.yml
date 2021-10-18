@@ -46,11 +46,11 @@ jobs:
         uses: alirezatheh/latex-action@v2
         with:
           root_file: resume.tex
-          working_directory: portfolio/tex
+          working_directory: portfolio/latex
           args: -pdf --interaction=batchmode
 
       - name: Move resume PDF to site
-        run: mv portfolio/tex/resume.pdf site/files
+        run: mv portfolio/latex/resume.pdf site/files
 
       - name: Deploy portfolio to alirezatheh.github.io
         uses: peaceiris/actions-gh-pages@v3

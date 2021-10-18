@@ -20,4 +20,4 @@ css
 site
 
 # Generated tex files
-portfolio/tex/*.tex
+portfolio/latex/*.tex

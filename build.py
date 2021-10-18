@@ -19,7 +19,7 @@ for file in os.listdir(join('portfolio', 'templates')):
         if match.group('ext') == 'html':
             write_html(name=match.group('name'), path=join('site', file))
         elif match.group('ext') == 'tex':
-            write_tex(name=match.group('name'), path=join('portfolio', 'tex', file))
+            write_tex(name=match.group('name'), path=join('portfolio', 'latex', file))
 
 static_dir = join('portfolio', 'static')
 for filename in os.listdir(static_dir):

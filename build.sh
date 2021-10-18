@@ -1,4 +1,5 @@
 # Local build script
+sass portfolio/static/scss/style.scss portfolio/static/css/style.css
 python build.py
 cd portfolio/tex || exit
 mkdir -vp build

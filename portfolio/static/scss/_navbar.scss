@@ -11,17 +11,24 @@
   }
 }
 
+@media (min-width: $lg) {
+  .navbar {
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}
+
 @media (min-width: $xl) {
   .navbar {
-    margin-left: 6%;
-    margin-right: 6%;
+    margin-left: 9%;
+    margin-right: 9%;
   }
 }
 
 @media (min-width: $xxl) {
   .navbar {
-    margin-left: 12%;
-    margin-right: 12%;
+    margin-left: 15%;
+    margin-right: 15%;
   }
 }
 

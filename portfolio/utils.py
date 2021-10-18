@@ -120,9 +120,9 @@ def read_data(name: str, markup: bool = True) -> dict:
         'experience.sections.industrial',
     ]
 
-    # Ignore name and tags
+    # Ignore name, tags, birthdate and blog (for now).
     sections = [section for section in data
-                if section not in ('name', 'tags', 'birthdate')]
+                if section not in ('name', 'tags', 'birthdate', 'blog')]
     data['sections'] = sections
 
     if markup:

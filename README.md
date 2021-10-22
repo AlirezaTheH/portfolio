@@ -1,4 +1,6 @@
 # Portfolio
+[![publish](https://github.com/alirezatheh/portfolio/workflows/publish/badge.svg)](https://github.com/alirezatheh/portfolio/actions)
+
 Building portfolio website using nothing but YAML files!
 
 ## Installation

@@ -43,11 +43,13 @@ jobs:
         run: python build.py
 
       - name: Build resume PDF
-        uses: alirezatheh/latex-action@v2
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: resume.tex
           working_directory: portfolio/latex
           args: -pdf --interaction=batchmode
+          pre_compile: set -e
+          post_compile: set +e
 
       - name: Move resume PDF to site
         run: mv portfolio/latex/resume.pdf site/files

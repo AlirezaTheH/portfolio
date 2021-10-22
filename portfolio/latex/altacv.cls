@@ -193,7 +193,7 @@
 \NewInfoField{birthdate}{\faBirthdayCake}
 \NewInfoField*{email}{\faAt}
 \NewInfoField*{phone}{\faPhone}
-\NewInfoField*{linkedin}{\faLinkedin}
+\NewInfoField*{linkedin}{\faLinkedinIn}
 \NewInfoField*{github}{\faGithub}
 \NewInfoField*{location}{\faMapMarker}
 

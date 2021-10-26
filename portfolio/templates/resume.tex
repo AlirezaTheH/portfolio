@@ -15,12 +15,10 @@
 
 \firstname{\VAR{data['name']['first']}}
 \lastname{\VAR{data['name']['last']}}
-\tagline{\VAR{data['tags']}}
-
-\photo{3cm}{../static/images/headshot-color}
+\tagline{\VAR{data['tags'].split(', ') | last}}
+\about{\VAR{data['about']}}
 
 \contact{%
-    \birthdate{\VAR{data['birthdate']}}\par
     \BLOCK{for contact in data['contact']}
     \VAR{'\\'}\VAR{contact['name']}{\VAR{contact['printable']}}{\VAR{contact['href']}}\par
     \BLOCK{endfor}
@@ -34,14 +32,13 @@
 % Start a 2-column paracol.
 \begin{paracol}{2}
 
-
 % -- Skills ------------------------------------------------------------
 \cvsection{}{Skills}
 
 \BLOCK{for skill in data['skills']}
 \cvsubsection{\VAR{skill['type']}}
 
-\cvsubsubsection{Day-to-Day:}
+\BLOCK{if 'day-to-day' in skill}
 \cvbadges{%
 \BLOCK{for s in skill['day-to-day'].split(', ')}
 \BLOCK{if loop.last}
@@ -50,18 +47,7 @@
 \VAR{s.replace('#', '\#')},
 \BLOCK{endif}
 \BLOCK{endfor}
-\medskip
-
-\cvsubsubsection{Other:}
-\cvbadges{%
-\BLOCK{for s in skill['other'].split(', ')}
-\BLOCK{if loop.last}
-\VAR{s.replace('#', '\#')}}
-\BLOCK{else}
-\VAR{s.replace('#', '\#')},
 \BLOCK{endif}
-\BLOCK{endfor}
-
 
 \BLOCK{if not loop.last}
 \divider
@@ -70,26 +56,9 @@
 \BLOCK{endfor}
 % ----------------------------------------------------------------------
 
-
-% -- Personality -------------------------------------------------------
-\cvsection{}{Personality}
-
-\cvbadges{%
-\BLOCK{for personality in data['personality']}
-\BLOCK{if loop.last}
-\href{\VAR{personality['href']}}{\VAR{personality['printable']}}}
-\BLOCK{else}
-\href{\VAR{personality['href']}}{\VAR{personality['printable']}},
-\BLOCK{endif}
-\BLOCK{endfor}
-% ----------------------------------------------------------------------
-
-\newpage
-
 % -- Interests ---------------------------------------------------------
 \cvsection{}{Interests}
 
-\cvsubsubsection{Profession related:}
 \cvbadges{%
 \BLOCK{for interest in data['interests']['profession-related'].split(', ')}
 \BLOCK{if loop.last}
@@ -99,42 +68,12 @@
 \BLOCK{endif}
 \BLOCK{endfor}
 \medskip
-
-\cvsubsubsection{Other:}
-\cvbadges{%
-\BLOCK{for interest in data['interests']['other'].split(', ')}
-\BLOCK{if loop.last}
-\VAR{interest}}
-\BLOCK{else}
-\VAR{interest},
-\BLOCK{endif}
-\BLOCK{endfor}
 % ----------------------------------------------------------------------
 
 \switchcolumn
 
-% -- Education ---------------------------------------------------------
-\cvsection{}{Education}
-
-\BLOCK{for e in data['education']}
-\cvevent
-    {\VAR{e['degree']}}
-    {\VAR{e['school']}}
-    {\VAR{e.get('department', e['description'])}}
-    {\VAR{e['timeperiod']}}
-    {\VAR{e['location']}}
-\small{\VAR{e['elaboration'].strip()}}
-
-\BLOCK{if not loop.last}
-\divider
-\BLOCK{endif}
-
-\BLOCK{endfor}
-% ----------------------------------------------------------------------
-
-
-% -- Industrial Experience ---------------------------------------------
-\cvsection{Industrial}{Experience}
+% -- Experience ---------------------------------------------
+\cvsection{}{Experience}
 
 \BLOCK{for ie in data['experience']['sections']['industrial']}
 \BLOCK{if ie['visible']}
@@ -161,60 +100,17 @@
 % ----------------------------------------------------------------------
 
 
-% -- Teaching Experience -----------------------------------------------
-\cvsection{Teaching}{Experience}
+% -- Education ---------------------------------------------------------
+\cvsection{}{Education}
 
-\BLOCK{for te in data['experience']['sections']['teaching']}
-\BLOCK{if te['visible']}
-
+\BLOCK{for e in data['education']}
 \cvevent
-    {\VAR{te['title']}}
-    {\VAR{te['school']}}
-    {}
-    {\VAR{te['timeperiod']}}
-    {\VAR{te['location']}}
-
-\BLOCK{if not loop.last}
-\divider
-\BLOCK{endif}
-
-\BLOCK{endif}
-\BLOCK{endfor}
-% ----------------------------------------------------------------------
-
-
-% --- Volunteer Experience ---------------------------------------------
-\cvsection{Volunteer}{Experience}
-
-\BLOCK{for ve in data['experience']['sections']['volunteer']}
-\BLOCK{if ve['visible']}
-
-\cvevent
-    {\VAR{ve['title']}}
-    {\VAR{ve['school']}}
-    {}
-    {\VAR{ve['timeperiod']}}
-    {\VAR{ve['location']}}
-
-\BLOCK{if not loop.last}
-\divider
-\BLOCK{endif}
-
-\BLOCK{endif}
-\BLOCK{endfor}
-% ----------------------------------------------------------------------
-
-
-% -- Honors ------------------------------------------------------------
-\cvsection{}{Honors}
-
-\BLOCK{for honor in data['honors']}
-\cvevent
-    {\VAR{honor['accomplishment']} in \VAR{honor['title']}}
-    {\VAR{honor['school']}}
-    {\VAR{honor['description']}}
-    {\VAR{honor['timeperiod']}}
-    {\VAR{honor['location']}}
+    {\VAR{e['degree']}}
+    {\VAR{e['school']}}
+    {\VAR{e.get('department', e['description'])}}
+    {\VAR{e['timeperiod']}}
+    {\VAR{e['location']}}
+\small{\VAR{e['elaboration'].strip()}}
 
 \BLOCK{if not loop.last}
 \divider

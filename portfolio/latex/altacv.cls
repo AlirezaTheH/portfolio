@@ -68,7 +68,7 @@
 % Colors
 \RequirePackage{xcolor}
 
-\definecolor{themecolor}{HTML}{5c2f7e}
+\definecolor{themecolor}{HTML}{1a1e75}
 \definecolor{slategray}{HTML}{2e2e2e}
 \definecolor{lightergray}{HTML}{e9e9e9}
 \definecolor{lightgray}{HTML}{666666}
@@ -130,12 +130,9 @@
 
 % Incorporating hyperlinks
 % Using \unfriendlydetokenize to avoid breaking unicode
-% Use accsupp so that when copying/pasting the icon from PDF to a text
-% file, the icon name is pasted
 % \printinfo{symbol}{detail}[optional hyperlink prefix]
 \ExplSyntaxOn
 \NewDocumentCommand{\printinfo}{m m o}{%
-    \BeginAccSupp{method=escape,ActualText={#1:~#2}}
     \IfNoValueTF{#3}{%
         \mbox{\textcolor{accent}{\normalfont #1}~\utffriendlydetokenize{#2}\hspace{2em}}%
     }{%
@@ -148,11 +145,12 @@
             \mbox{\textcolor{accent}{\normalfont #1}~{\utffriendlydetokenize{#3#2}}\hspace{2em}}%
         \fi%
     }%
-    \EndAccSupp{}
 }%
 
 
 % Exploring convenient creation of fields
+% Use accsupp so that when copying/pasting the icon from PDF to a text
+% file, the control name is pasted instead of icon
 % Add starred mode to create \printinfo with full URL
 % \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix]
 % \NewInfoFiled*{fieldname}{symbol}
@@ -163,23 +161,27 @@
     \csdef{#2 symbol}{#3}%
     \IfBooleanTF{#1}{%
         \csdef{#2}##1##2{%
-            \if@withhyper
-                \IfNoValueTF{##2}
-                    {\printinfo{\csuse{#2 symbol}}{##1}}%
-                    {\printinfo{\csuse{#2 symbol}}{##1}[##2]}%
-            \else
-                \printinfo{\csuse{#2 symbol}}{##1}%
-            \fi%
+            \BeginAccSupp{method=escape,ActualText={#2:~##1}}
+                \if@withhyper
+                    \IfNoValueTF{##2}
+                        {\printinfo{\csuse{#2 symbol}}{##1}}%
+                        {\printinfo{\csuse{#2 symbol}}{##1}[##2]}%
+                \else
+                    \printinfo{\csuse{#2 symbol}}{##1}%
+                \fi%
+            \EndAccSupp{}
         }%
     }{%
         \csdef{#2}##1{%
-            \if@withhyper
-                \IfNoValueTF {#4}
-                    {\printinfo{\csuse{#2 symbol}}{##1}}%
-                    {\printinfo{\csuse{#2 symbol}}{##1}[\csuse{#2 hyperprefix}##1]}%
-            \else
-                \printinfo{\csuse{#2 symbol}}{##1}%
-            \fi%
+            \BeginAccSupp{method=escape,ActualText={#2:~##1}}
+                \if@withhyper
+                    \IfNoValueTF {#4}
+                        {\printinfo{\csuse{#2 symbol}}{##1}}%
+                        {\printinfo{\csuse{#2 symbol}}{##1}[\csuse{#2 hyperprefix}##1]}%
+                \else
+                    \printinfo{\csuse{#2 symbol}}{##1}%
+                \fi%
+            \EndAccSupp{}
         }%
     }
 }
@@ -188,6 +190,7 @@
 \newcommand{\firstname}[1]{\def\@firstname{#1}}
 \newcommand{\lastname}[1]{\def\@lastname{#1}}
 \newcommand{\tagline}[1]{\def\@tagline{#1}}
+\newcommand{\about}[1]{\def\@about{#1}}
 \newcommand{\contact}[1]{\def\@contact{#1}}
 \NewInfoField*{portfolio}{\faGlobe}
 \NewInfoField{birthdate}{\faBirthdayCake}
@@ -195,7 +198,8 @@
 \NewInfoField*{phone}{\faPhone}
 \NewInfoField*{linkedin}{\faLinkedinIn}
 \NewInfoField*{github}{\faGithub}
-\NewInfoField*{location}{\faMapMarker}
+\NewInfoField*{location}{\faMapMarker*}
+\NewInfoField*{mobile}{\faMobile*}
 
 % Support for multiple photos
 \newlength{\altacv@photos@width}
@@ -275,25 +279,42 @@
 }
 
 \newcommand{\makecvheader}{%
+    \setcolumnwidth{\@sidecolwidth/1cm}
+    \begin{paracol}{2}
+        \begin{column}
+            {\color{themecolor}\contactfont\@contact\par}
+        \end{column}
+        \begin{column}
+        \begingroup
+            \raggedright%
+            {\firstnamefont\color{name}\@firstname\lastnamefont\color{name}\@lastname\par}
+            \smallskip
+            {\color{tagline}\taglinefont\@tagline\par}
+            \medskip
+            {\small\@about}
+        \endgroup\medskip
+        \end{column}
+    \end{paracol}
+}
+
+\newcommand{\makecvheaderwithphoto}{%
     \setcolumnwidth{\@sidecolwidth/1cm,8cm/1cm}
     \begin{paracol}{3}
         \begin{column}
-            \vspace*{-.75cm}
             \altacv@left@photos\centering%
         \end{column}
         \begin{column}
         \begingroup
-            \vspace*{.5cm}
             \raggedright%
             {\firstnamefont\color{name}\@firstname\lastnamefont\color{name}\@lastname\par}
-            \medskip
+            \smallskip
             {\color{tagline}\taglinefont\@tagline\par}
+            \medskip
+            {\small\@about}
         \endgroup\medskip
         \end{column}
         \begin{column}
-            \vspace*{.5cm}
             {\contactfont\@contact\par}
-            \altacv@right@photos\par%
         \end{column}
     \end{paracol}
 }
@@ -302,44 +323,52 @@
 
 % \cvsection{light title}{title}
 \newcommand{\cvsection}[2]{%
-  \nointerlineskip\bigskip%
-  \ifstrequal{#1}{}{}{{\color{heading}\cvsectionlightfont#1\hspace{.05cm}}}%
-  {\color{heading}\cvsectionfont#2}\\[-1ex]%
-  {\color{headingrule}\rule{\linewidth}{.1pt}\par}\medskip
+    \nointerlineskip\bigskip%
+    \ifstrequal{#1}{}{}{{\color{heading}\cvsectionlightfont#1\hspace{.05cm}}}%
+    {\color{heading}\cvsectionfont#2}\\[-1ex]%
+    {\color{headingrule}\rule{\linewidth}{.1pt}\par}\medskip
 }
 
 % \cvsubsection{title}
 \newcommand{\cvsubsection}[1]{%
-  {\color{subheading}\cvsubsectionfont{#1}\par}\smallskip
+    {\color{subheading}\cvsubsectionfont{#1}\par}\smallskip
 }
 
 % \cvsubsubsection{title}
 \newcommand{\cvsubsubsection}[1]{%
-  {\cvsubsubsectionfont{#1}\par}\smallskip
+    {\cvsubsubsectionfont{#1}\par}\smallskip
 }
 
-
+% Use accsupp so that the icons meaning is copied/pasted
 % \cvevent{title}{company or school}{timeperiod}{location}
 \newcommand{\cvevent}[5]{%
-  {\cvsubsectionfont\color{emphasis}#1\par}
-  \smallskip\normalsize
-  \ifstrequal{#2}{}{}{
-      \textbf{#2}
-      \ifstrequal{#3}{}{\par\smallskip}{}
-  }
-  \ifstrequal{#3}{}{}{{#3}\par\smallskip}
-  \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\faCalendar~#4}}}%
-  \ifstrequal{#5}{}{}{{\small\makebox[0.5\linewidth][l]{\faMapMarker~#5}}}\par
-  \medskip\normalsize
+    {\cvsubsectionfont\color{emphasis}#1\par}
+    \smallskip\normalsize
+    \ifstrequal{#2}{}{}{
+        \textbf{#2}
+        \ifstrequal{#3}{}{\par\smallskip}{}
+    }
+    \ifstrequal{#3}{}{}{{#3}\par\smallskip}
+    \ifstrequal{#4}{}{}{%
+        \BeginAccSupp{method=escape,ActualText={Time Period: #4}}
+            \small\makebox[0.5\linewidth][l]{\faCalendar[regular]~#4}%
+        \EndAccSupp{}
+    }%
+    \ifstrequal{#5}{}{}{%
+        \BeginAccSupp{method=escape,ActualText={Location: #5}}
+            \small\makebox[0.5\linewidth][l]{\faMapMarker*~#5}%
+        \EndAccSupp{}
+    }\par
+    \medskip\normalsize
 }
 
 % \cvachievement{symbol}{title}{detail}
 \newcommand{\cvachievement}[3]{%
-  \begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
-  \multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2}\\
-  & #3
-  \end{tabularx}%
-  \smallskip
+    \begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
+    \multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2}\\
+    & #3
+    \end{tabularx}%
+    \smallskip
 }
 
 
@@ -350,12 +379,14 @@
     \pgfmathsetmacro{\sofarlinewidth}{0}%
     \foreach \badgetext in {#1} {%
         % Calculate badgewidth with length of badgetext + 2*(inner xsep)
-        \settowidth{\badgewidth}{\pgfinterruptpicture\footnotesize\badgetext\endpgfinterruptpicture+8}%
+        \settowidth{\badgewidth}{\footnotesize\badgetext}%
+        \addtolength{\badgewidth}{8pt}%
         % Check if badge is too large for current line
-        \ifdimgreater{\badgewidth}{\linewidth-\sofarlinewidth}{%
+        \pgfmathparse{\linewidth-\sofarlinewidth}%
+        \ifdimgreater{\badgewidth}{\pgfmathresult pt}{%
             % Go to next line
             \par%
-            \pgfmathparse{0}%
+            \pgfmathparse{\badgewidth+2}%
             \global\let\sofarlinewidth=\pgfmathresult%
         }%
         {%
@@ -381,14 +412,14 @@
 % Use accsupp so that the actual numeric value is copied/pasted
 % \cvskill{title}{rate}
 \newcommand{\cvskill}[2]{%
-  \textcolor{emphasis}{\textbf{#1}}\hfill
-  \BeginAccSupp{method=plain,ActualText={#2}}
-  \foreach \x in {1,...,5}{%
-    \ifdimequal{\x pt - #2 pt}{0.5pt}%
-    {\clipbox*{0pt -0.25ex {.5\width} {\totalheight}}{\color{accent}\ratingmarker}%
-     \clipbox*{{.5\width} -0.25ex {\width} {\totalheight}}{\color{body!30}\ratingmarker}}
-    {\ifdimgreater{\x bp}{#2 bp}{\color{body!30}}{\color{accent}}\ratingmarker}%
-  }\EndAccSupp{}\par%
+    \textcolor{emphasis}{\textbf{#1}}\hfill
+    \BeginAccSupp{method=plain,ActualText={#2}}
+    \foreach \x in {1,...,5}{%
+        \ifdimequal{\x pt - #2 pt}{0.5pt}%
+        {\clipbox*{0pt -0.25ex {.5\width} {\totalheight}}{\color{accent}\ratingmarker}%
+         \clipbox*{{.5\width} -0.25ex {\width} {\totalheight}}{\color{body!30}\ratingmarker}}
+        {\ifdimgreater{\x bp}{#2 bp}{\color{body!30}}{\color{accent}}\ratingmarker}%
+    }\EndAccSupp{}\par%
 }
 
 % \wheelchart{outer radius}{inner radius}{
@@ -463,12 +494,12 @@
 
 % \cvref{name}{institute}{email}
 \newcommand{\cvref}[3]{%
-  \smallskip
-  \textcolor{emphasis}{\textbf{#1}}\par
-  \begin{description}[font=\color{accent},style=multiline,leftmargin=1.35em,align=left]
-  \item[\small\normalfont\emailsymbol] #2
-  \item[\small\normalfont\mailaddresssymbol] #3
-  \end{description}
+    \smallskip
+    \textcolor{emphasis}{\textbf{#1}}\par
+    \begin{description}[font=\color{accent},style=multiline,leftmargin=1.35em,align=left]
+    \item[\small\normalfont\emailsymbol] #2
+    \item[\small\normalfont\mailaddresssymbol] #3
+    \end{description}
 %   \medskip
 }
 
@@ -485,7 +516,7 @@
 
 
 \AtBeginDocument{%
-  \pagestyle{empty}
-  \color{body}
-  \raggedright
+    \pagestyle{empty}
+    \color{body}
+    \raggedright
 }

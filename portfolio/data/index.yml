@@ -6,12 +6,14 @@ birthdate: October 23, 1995
 
 tags: AI Engineer, Backend Developer
 
+about: A hard working Backend Developer specializing in Backend principles with over 5 years of architecting and building web applications and optimizing Backend systems performance, passionate about AI.
+
 education:
   - degree: Bachelor of Science in Computer Engineering with AI Concentration
     school: Iran University of Science and Technology
     department: Department of Computer Engineering
     location: Tehran, Iran
-    timeperiod: August 2014 - February 2020
+    timeperiod: September 2014 - February 2020
     elaboration: |
       Graph-based keyphrase extraction for Persian text under the supervision of Dr. Behrouz Minaei
 
@@ -28,7 +30,7 @@ experience:
   sections:
     industrial:
       - company: Bookapo
-        title: Backend Lead Developer
+        title: Lead Backend Developer
         location: Tehran, Iran
         timeperiod: February 2019 - September 2019
         visible: True
@@ -41,7 +43,7 @@ experience:
           - Reached out to a 40,000 of iOS users by platform's iOS app (React Native) by building iOS version and solving the problems to uploading it to App Store (which is something nearly impossible in Iran due to US sanctions).
 
       - company: Bale Messenger
-        title: Mid-level Continuous Integration Desginer
+        title: Mid-level Continuous Integration Designer
         location: Tehran, Iran
         timeperiod: June 2017 - February 2018
         visible: True
@@ -51,12 +53,12 @@ experience:
           - Spearheaded internal education initiatives to train colleagues on working with CI and fundamentals of Test-driven development (TDD).
 
       - company: Irsapardaz Pasargad
-        title: Junior Web Devloper
+        title: Junior Web Developer
         location: Tehran, Iran
         timeperiod: May 2016 - October 2016
         visible: True
         elaboration: |
-          - Improved a car dealership website (.NET) performance by 30% by refactoring website's controller and reducing it's response time.
+          - Improved the performance of a car dealership website (.NET) by 30% by refactoring website's controller and reducing it's response time.
           - Enhanced website's maintainability by updating it's admin panel.
           - Gained a 500% increase in number of active ads up to 25,000 ads by updaeting and improving general purpose ad crawler of the website.
 
@@ -115,12 +117,32 @@ experience:
 
 skills:
   - type: Programming Languages
-    day-to-day: Python, Bash, YAML
-    other: Swift, C++, HTML, CSS, SCSS, C, C#, Java, JavaScript, Matlab, ASL, VHDL, Verilog, Assembly, Objective-C, ANTLR
+    day-to-day: Python, Bash, YAML, Swift
+    other: C++, HTML, CSS, SCSS, C, C#, LaTex, Java, JavaScript, Matlab, ASL, VHDL, Verilog, Assembly, Objective-C, ANTLR
 
-  - type: Packages
-    day-to-day: Django REST framework, NLTK, Hazm, NumPy, SciPy, NetworkX, Matplotlib, SwiftUI, appium, .NET
-    other: Keras, PyQt, Telegram Client, Telegram Bot, Twitter Client, jQuery
+  - type: Frameworks
+    day-to-day: Django REST framework, SwiftUI, Twitter Client, Telegram Client, Telegram Bot
+    other: Django, Flask, jQuery, .NET
+
+  - type: NLP
+    day-to-day: NLTK, Hazm
+
+  - type: Visualization
+    day-to-day: Matplotlib, nxviz, mesa
+    other: PyQt
+
+  - type: Data Analysis and Handling
+    day-to-day: NumPy, SciPy, pandas, NetworkX
+
+  - type: Machine Learning
+    day-to-day: Keras
+
+  - type: Testing
+    day-to-day: pytest
+    other: appium
+
+  - type: Documentation
+    day-to-day: sphinx, drf-yasg
 
   - type: Databases
     day-to-day: SQL, Redis
@@ -131,8 +153,8 @@ skills:
     other: Paw, Docker, NGINX, Apache, Xilinx ISE
 
   - type: Operating Systems
-    day-to-day: macOS
-    other: Linux, Windows
+    day-to-day: macOS, Linux
+    other: Windows
 
 interests:
   nested: False
@@ -238,6 +260,11 @@ contact:
     href: https://linkedin.com/in/alirezatheh
 
   - name: location
-    caption: Iran
-    printable: Iran
-    href: https://goo.gl/maps/RKpRmdWpxXm33Ah38
+    caption: Tehran, Iran
+    printable: Tehran, Iran
+    href: https://goo.gl/maps/XikutKj97ssu19Jb9
+
+  - name: mobile
+    caption: Mobile
+    printable: +98 910 497 3021
+    href: tel:+989104973021

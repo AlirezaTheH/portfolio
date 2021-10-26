@@ -122,7 +122,11 @@ def read_data(name: str, markup: bool = True) -> dict:
 
     # Ignore name, tags, birthdate and blog (for now).
     sections = [section for section in data
-                if section not in ('name', 'tags', 'birthdate', 'blog')]
+                if section not in ('name',
+                                   'tags',
+                                   'birthdate',
+                                   'about',
+                                   'blog')]
     data['sections'] = sections
 
     if markup:

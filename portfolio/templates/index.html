@@ -335,16 +335,22 @@
             </div>
             <div class="col-md-9 bg-skills-card" id="card-content">
               <div class="card-body card-body-content">
+                {% if 'day-to-day' in skill %}
                 <h6>{{ skill['type'].capitalize() }} that I use in my day-to-day:</h6>
                 {% for s in skill['day-to-day'].split(', ') %}
                 <span class="badge rounded-pill">{{ s }}</span>
                 {% endfor %}
+                {% if 'other' in skill %}
                 <br>
                 <br>
+                {% endif %}
+                {% endif %}
+                {% if 'other' in skill %}
                 <h6>Other {{ skill['type'].lower() }}:</h6>
                 {% for s in skill['other'].split(', ') %}
                 <span class="badge rounded-pill">{{ s }}</span>
                 {% endfor %}
+                {% endif %}
               </div>
             </div>
           </div>
@@ -574,7 +580,7 @@
     </div>
     <div class="contact-container">
       <div class="contact" role="group">
-        {% for contact in data['contact'][1:] %}
+        {% for contact in data['contact'][1:-1] %}
         <a href="{{ contact['href'] }}"
            class="btn btn-bg btn-text {{ contact['name'] }}-icon-container"
            target="_blank">

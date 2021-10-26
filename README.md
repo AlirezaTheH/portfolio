@@ -26,3 +26,4 @@ Building portfolio website using nothing but YAML files!
 - Original idea and design for this work was inspired by Eric J. Ma's
   [resume](https://github.com/ericmjl/resume).
 - All icons are provided by [Icons 8](https://icons8.com).
+- Resume document class is based [AltaCV](https://github.com/liantze/AltaCV).

@@ -65,19 +65,19 @@ experience:
 
     teaching:
       - school: Iran University of Science and Technology
-        title: Teacher's Assistant for Algorithm Design and Analysis (Dr. Mohammad Reza Abbasifard)
+        title: Teacher Assistant for Algorithm Design and Analysis (Dr. Mohammad Reza Abbasifard)
         location: Tehran, Iran
         timeperiod: September 2016 - February 2017
         visible: True
 
       - school: Iran University of Science and Technology
-        title: Teacher's Assistant for Computer Architecture (Dr. Ahmad Patooghy)
+        title: Teacher Assistant for Computer Architecture (Dr. Ahmad Patooghy)
         location: Tehran, Iran
         timeperiod: September 2016 - February 2017
         visible: True
 
       - school: Iran University of Science and Technology
-        title: Teacher's Assistant for Data Structures (Dr. Nosratali Ashrafi-Payaman)
+        title: Teacher Assistant for Data Structures (Dr. Nosratali Ashrafi-Payaman)
         location: Tehran, Iran
         timeperiod: February 2016 - June 2016
         visible: True

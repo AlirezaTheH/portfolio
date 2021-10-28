@@ -58,9 +58,10 @@ experience:
         timeperiod: May 2016 - October 2016
         visible: True
         elaboration: |
-          - Improved the performance of a car dealership website (.NET) by 30% by refactoring website's controller and reducing it's response time.
+          - Worked directly with CTO to find and solve technical issues in a car dealership website (.NET).
+          - Improved the performance of the website by 30% by refactoring website's controller and reducing it's response time.
           - Enhanced website's maintainability by updating it's admin panel.
-          - Achieved a 500% increase in number of active ads up to 25,000 ads by updaeting and improving general purpose ad crawler of the website.
+          - Achieved a 500% increase in the number of active ads up to 25,000 ads by updaeting and improving general purpose ad crawler of the website.
 
 
     teaching:

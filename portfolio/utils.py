@@ -112,7 +112,7 @@ def read_data(name: str, markup: bool = True) -> dict:
     data: dict
         The data
     """
-    with open(join('portfolio', 'data', f'{name}.yml'), 'r+') as f:
+    with open(join('portfolio', 'data', f'{name}.yaml'), 'r+') as f:
         data = yaml.safe_load(f)
 
     elaboration_content = [

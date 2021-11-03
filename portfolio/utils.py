@@ -118,6 +118,7 @@ def read_data(name: str, markup: bool = True) -> dict:
     elaboration_content = [
         'education',
         'experience.sections.industrial',
+        'contributions',
     ]
 
     # Ignore name, tags, birthdate and blog (for now).

@@ -191,13 +191,16 @@ projects:
 contributions:
   - name: nxviz
     description: Composable and rational network visualizations in matplotlib
-    prs: https://github.com/ericmjl/nxviz/pulls?q=is%3Apr+author%3Aalirezatheh+is%3Aclosed
-    contribution: Add edge direction by source or target node color
+    prs: https://github.com/ericmjl/nxviz/pulls?q=is%3Apr+author%3Aalirezatheh+is%3Amerged
+    elaboration: |
+      - Added edge direction by source or target node color
+      - Fixed an edges line width issue
 
   - name: Awesome Persian NLP/IR
     description: Curated List of Persian Natural Language Processing and Information Retrieval Tools and Resources
-    prs: https://github.com/mhbashari/awesome-persian-nlp-ir/pulls?q=is%3Apr+author%3Aalirezatheh+is%3Aclosed+
-    contribution: Add Perke to tools
+    prs: https://github.com/mhbashari/awesome-persian-nlp-ir/pulls?q=is%3Apr+author%3Aalirezatheh+is%3Amerged
+    elaboration: |
+      - Added Perke to tools
 
 honors:
   - school: Iran University of Science and Technology

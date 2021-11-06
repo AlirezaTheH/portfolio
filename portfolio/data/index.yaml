@@ -195,6 +195,7 @@ contributions:
     elaboration: |
       - Added edge direction by source or target node color
       - Fixed an edges line width issue
+      - Fixed nodes and edges transparency bounds issues
 
   - name: Awesome Persian NLP/IR
     description: Curated List of Persian Natural Language Processing and Information Retrieval Tools and Resources

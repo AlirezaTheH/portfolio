@@ -197,6 +197,12 @@ contributions:
       - Fixed an edges line width issue
       - Fixed nodes and edges transparency bounds issues
 
+  - name: awesome-nlp
+    description: A curated list of resources dedicated to Natural Language Processing
+    prs: https://github.com/keon/awesome-nlp/pulls?q=is%3Apr+author%3Aalirezatheh+is%3Amerged
+    elaboration: |
+      - Add NLP in Persian section containing an abstract of most useful Persian resources
+
   - name: Awesome Persian NLP/IR
     description: Curated List of Persian Natural Language Processing and Information Retrieval Tools and Resources
     prs: https://github.com/mhbashari/awesome-persian-nlp-ir/pulls?q=is%3Apr+author%3Aalirezatheh+is%3Amerged

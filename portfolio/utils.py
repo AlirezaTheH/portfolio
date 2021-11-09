@@ -4,7 +4,6 @@ import jinja2
 import yaml
 from dict_deep import deep_get
 from flask import Markup
-from jinja2 import Template
 from markdown import markdown as md
 
 
@@ -26,7 +25,7 @@ def render_template(path: str, data: dict) -> str:
     """
     with open(path, 'r+') as f:
         template = f.read()
-    template = Template(source=template)
+    template = jinja2.Template(source=template)
     return template.render(data=data)
 
 

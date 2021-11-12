@@ -197,6 +197,7 @@ contributions:
       - Fixed an edges line width issue
       - Fixed nodes and edges transparency bounds issues
       - Added node label annotation functions
+      - Added font support for group and node label annotations
 
   - name: awesome-nlp
     description: A curated list of resources dedicated to Natural Language Processing
